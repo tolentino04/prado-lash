@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lash by Prado</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="inicio.html">Início</a>
+            <a href="servicis.html">Serviços</a>
+            <a href="agendamento.html">Agendamento</a>
+            <a href="sobre.html">Sobre Yasmin Prado</a>
+        </nav>
+
+        <h1>Lash by Prado</h1>
+
+        <!-- Seção de Agendamento -->
+        <section id="agendamento" class="booking">
+            <h2><i class="fas fa-calendar-check"></i> Agende seu horário</h2>
+            <p>Preencha o formulário abaixo para agendar seu atendimento. Você será redirecionado para o WhatsApp com sua mensagem pronta.</p>
+            
+            <div class="form-container">
+                <form id="booking-form">
+                    <input type="text" id="name" name="name" placeholder="Seu nome" required>
+                    <input type="tel" id="phone" name="phone" placeholder="Seu telefone (com DDD)" required>
+                    
+                    <select id="service" required>
+                        <option value="">Selecione o serviço</option>
+                        <option value="Extensão de Cílios">Extensão de Cílios</option>
+                        <option value="Design de Sobrancelhas">Design de Sobrancelhas</option>
+                        <option value="Design com Henna">Design com Henna</option>
+                    </select>
+                    
+                    <input type="date" id="date" name="date" required>
+                    <input type="time" id="time" name="time" required>
+                    
+                    <textarea id="message" name="message" placeholder="Mensagem adicional (opcional)" rows="4"></textarea>
+                    
+                    <button type="submit">Enviar para WhatsApp</button>
+                </form>
+            </div>
+        </section>
+    </header>
+
+    <main></main>
+
+    <!-- Script de envio para WhatsApp -->
+    <script>
+        document.getElementById("booking-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const phone = document.getElementById("phone").value;
+            const service = document.getElementById("service").value;
+            const date = document.getElementById("date").value;
+            const time = document.getElementById("time").value;
+            const message = document.getElementById("message").value;
+
+            const text = `Olá, me chamo ${name}. Gostaria de agendar um horário para ${service} no dia ${date} às ${time}. Meu telefone: ${phone}. Mensagem adicional: ${message}`;
+
+            const whatsappURL = `https://wa.me/5511997256532?text=${encodeURIComponent(text)}`;
+            window.open(whatsappURL, "_blank");
+        });
+    </script>
+
+</body>
+</html>
